@@ -1,0 +1,28 @@
+.flexbox(@jc:space-between, @ai:center, @fd:row, @fw:nowrap) {
+  display: flex;
+  flex: 1;
+  justify-content: @jc;
+  align-items: @ai;
+  flex-direction: @fd;
+  flex-wrap: @fw;
+}
+.textoverflow(@clamp:1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @clamp;
+  overflow: hidden;
+}
+
+@bgColor: #fff;  
+@fontColorH3: #282828;  
+@fontColorP: #656565; 
+@tipColor:#989898; 
+@borderColor: #f2f2f2; 
+
+//红色
+@primaryColor : #e8102c;
+@tertiaryColor : #e9727f;
+a:visited, a:hover, a:active,a {
+  text-decoration: none;
+}
+ 
