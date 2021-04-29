@@ -9,6 +9,9 @@
     <el-form-item label="药品名称" prop="name">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
+    <el-form-item label="药品状态" prop="state" v-if="false">
+      <el-input v-model="ruleForm.state"></el-input>
+    </el-form-item>
     <el-form-item label="生产日期" prop="storagedate">
       <el-date-picker
         v-model="ruleForm.storagedate"

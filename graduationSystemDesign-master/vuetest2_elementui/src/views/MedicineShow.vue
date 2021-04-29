@@ -262,7 +262,7 @@ export default {
             .then(function (resp) {
               if (resp.data == "success") {
                 axios
-                  .delete("http://localhost:8181/book/deleteById/" + r.id)
+                  .delete("http://localhost:8181/book/deleteById/" + r.medicineid)
                   .then(function (resp) {
                     _this.$alert(r.name + "药品信息" + "已经删除", "删除成功", {
                       confirmButtonText: "确定",
@@ -421,7 +421,7 @@ export default {
         })
       }
     });
-    axios.get("http://localhost:8181/book/findAll").then(function (resp) {
+    axios.get("http://localhost:8181/book/findType2").then(function (resp) {
       // axios.get('http://localhost:8181/book/medineFindProvider/'+"测试").then(function (resp) {
       console.log(resp);
       _this.tableData = resp.data;

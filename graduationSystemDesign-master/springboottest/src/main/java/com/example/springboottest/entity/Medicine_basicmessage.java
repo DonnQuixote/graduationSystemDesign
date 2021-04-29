@@ -22,4 +22,5 @@ public class Medicine_basicmessage {
     private Double unitprice;
     private String provider;
     private Date enddate;
+    private Integer state;
 }

@@ -26,6 +26,7 @@ public class MedicineHandler {
 
     @PostMapping("/save")
     public String save(@RequestBody Medicine_basicmessage medicineBasicmessage){
+        medicineBasicmessage.setState(0);
         Medicine_basicmessage result = medicineReposity.save(medicineBasicmessage);
         if(result !=null){
             return "success";
@@ -51,7 +52,10 @@ public class MedicineHandler {
 
     @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable("id") Integer id){
-        medicineReposity.deleteById(id);
+        //medicineReposity.deleteById(id);
+        Medicine_basicmessage medicine_basicmessage = medicineReposity.getOne(id);
+        medicine_basicmessage.setState(1);
+        medicineReposity.save(medicine_basicmessage);
     }
 
     @GetMapping("medineFindProvider/{provider}")
@@ -79,6 +83,11 @@ public class MedicineHandler {
     @GetMapping("/findAll")
     public List<Medicine_basicmessage> findAll(){
         return medicineReposity.findAll();
+    }
+
+    @GetMapping("/findType2")
+    public List<Medicine_basicmessage> Type2(){
+        return medicineReposity.findType2();
     }
 
     @PostMapping("/updateCount")
@@ -120,7 +129,9 @@ public class MedicineHandler {
         Integer temp = list.size();
         for(Integer i =0;i<temp;i++){
             Medicine_basicmessage medicine_basicmessage = list.get(i);
-            medicineReposity.delete(medicine_basicmessage);
+            //medicineReposity.delete(medicine_basicmessage);
+            medicine_basicmessage.setState(1);
+            medicineReposity.save(medicine_basicmessage);
         }
         if(temp>0){
             return temp;

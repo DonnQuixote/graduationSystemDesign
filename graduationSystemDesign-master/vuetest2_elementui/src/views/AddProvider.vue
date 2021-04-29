@@ -38,6 +38,7 @@ export default {
       rules: {
         phonenumber: [
           { required: true, message: "请输入联系人电话", trigger: "blur" },
+          { min: 1, message: "长度至少为1", trigger: "blur" },
         ],
         director: [
           { required: true, message: "请输入联系人姓名", trigger: "blur" },

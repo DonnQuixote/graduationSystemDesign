@@ -41,11 +41,11 @@
               class="export-excel-wrapper"
               :data="json_data"
               :fields="json_fields"
-              name="进药订单.xlsx"
+              name="进药订单.xls"
             >
               <!-- 上面可以自定义自己的样式，还可以引用其他组件button -->
               <el-button type="primary" @click="submitOrder2()"
-                >提交订单</el-button
+                >生成excel文件</el-button
               >
             </download-excel>
 
@@ -142,14 +142,14 @@ export default {
   name: "frontEndPage",
   methods: {
     submitOrder() {
-       this.json_data = this.tableData;
+       //this.json_data = this.tableData;
       const _this = this;
       axios
         .get("http://localhost:8181/drugShoppingCart/findAll/")
         .then(function (resp) {
           console.log(resp);
           _this.eid = resp.data[0].eid;
-          _this.$alert(_this.eid);
+         // _this.$alert(_this.eid);
           axios
             .post(
               "http://localhost:8181/drugEnteredDetails/saveAll/",
@@ -170,10 +170,11 @@ export default {
           );
         });
       axios.get("http://localhost:8181/drugShoppingCart/deleteAll/");
-      window.location.reload();
+      //window.location.reload();
     },
     submitOrder2() {
       this.json_data = this.tableData;
+      this.submitOrder();
     },
     destructionOrder() {
       axios.get("http://localhost:8181/drugShoppingCart/deleteAll/");
@@ -215,7 +216,8 @@ export default {
             )
             .then(function (resp) {
               if (resp.data == "success") {
-                window.location.reload();
+                //window.location.reload();
+                row.count = _this.temp;
                 _this.$alert("修改成功");
               } else {
                 _this.$alert("修改失败");
@@ -268,7 +270,8 @@ export default {
               )
               .then(function (resp) {
                 if (resp.data == "success") {
-                  window.location.reload();
+                  //window.location.reload();
+                  row.count = _this.temp;
                   _this.$alert("修改成功");
                 } else {
                   _this.$alert("修改失败");

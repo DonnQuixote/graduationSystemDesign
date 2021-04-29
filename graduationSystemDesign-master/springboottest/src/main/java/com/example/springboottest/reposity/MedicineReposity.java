@@ -1,5 +1,6 @@
 package com.example.springboottest.reposity;
 
+import com.example.springboottest.entity.Drug_loss_report;
 import com.example.springboottest.entity.Order_front;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,5 +25,8 @@ public interface MedicineReposity extends JpaRepository<Medicine_basicmessage,In
     List<Medicine_basicmessage> timeDiffMonths();
     @Query(nativeQuery = true,value="select * from medicine_basicmessage m WHERE TIMESTAMPDIFF(day ,m.enddate,NOW())>0")
     List<Medicine_basicmessage> timeDiffOutOfDate();
+
+    @Query(nativeQuery = true,value="select * from medicine_basicmessage m where m.state=0 ")
+    List<Medicine_basicmessage> findType2();
 
 }
