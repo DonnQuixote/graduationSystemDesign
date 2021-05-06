@@ -37,18 +37,19 @@
           <el-table
             :data="frontEndPageChange"
             key="tableDataInstall"
+             :header-cell-style="{background:'#eef1f6',color:'#606266'}"
             border
             style="width: 100%"
           >
-            <el-table-column fixed prop="id" label="编号" width="150">
+            <el-table-column fixed prop="id"  align="center" label="编号" width="150">
             </el-table-column>
-            <el-table-column prop="name" label="药品名称" width="120">
+            <el-table-column prop="name"  align="center" label="药品名称" width="120">
             </el-table-column>
-            <el-table-column prop="medicinecount" label="售出数量" width="120">
+            <el-table-column prop="medicinecount"  align="center" label="售出数量" width="120">
             </el-table-column>
-            <el-table-column prop="provider" label="供应商" width="120">
+            <el-table-column prop="provider"  align="center" label="供应商" width="120">
             </el-table-column>
-            <el-table-column prop="eid" label="父进药订单编号" width="120" v-if="false">
+            <el-table-column prop="eid"  align="center" label="父进药订单编号" width="120" v-if="false">
             </el-table-column>
           </el-table>
         </div>

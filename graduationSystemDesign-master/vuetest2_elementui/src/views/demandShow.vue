@@ -2,7 +2,6 @@
 
 <template>
   <div>
-    <h1>demand</h1>
     <el-container style="height: 750px; border: 1px solid #eee">
       <div>
         <div style="margin-top: 10px">
@@ -36,24 +35,25 @@
         </div>
         <div style="margin-top: 30px">
           <el-table
+            :header-cell-style="{background:'#eef1f6',color:'#606266'}"
             :data="frontEndPageChange"
             key="tableDataInstall"
             border
             style="width: 100%"
           >
-            <el-table-column fixed prop="id" label="编号" width="150">
+            <el-table-column fixed align="center" prop="id" label="编号" width="150">
             </el-table-column>
-            <el-table-column prop="name" label="需求药品名称" width="120">
+            <el-table-column prop="name" align="center" label="需求药品名称" width="120">
             </el-table-column>
-            <el-table-column prop="count" label="数量" width="120">
+            <el-table-column prop="count" align="center" label="数量" width="120">
             </el-table-column>
-            <el-table-column prop="price" label="大致价钱" width="120">
+            <el-table-column prop="price" align="center" label="大致价钱" width="120">
             </el-table-column>
-            <el-table-column prop="provider" label="供应商" width="120">
+            <el-table-column prop="provider" align="center" label="供应商" width="120">
             </el-table-column>
-            <el-table-column prop="eid" label="父进药订单编号" width="120" v-if="false">
+            <el-table-column prop="eid" align="center" label="父进药订单编号" width="120" v-if="false">
             </el-table-column>
-            <el-table-column label="操作" width="100">
+            <el-table-column label="操作" align="center" width="100">
               <template slot-scope="scope">
                 <el-button
                   @click="addOrderFront(scope.row)"

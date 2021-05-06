@@ -1,8 +1,11 @@
 
 <template>
-  <div>
+  <div >
+    <div class="background">
+    <img :src="imgSrc" width="100%" height="100%" alt="" />
+    </div>
     <el-form ref="form" :rules="rules" :model="form" class="login-box">
-      <h3 class="login_title">欢迎登录</h3>
+      <h3 class="login-title">欢迎登录</h3>
       <el-form-item label="账号" prop="name">
         <el-input
           type="text"
@@ -27,6 +30,7 @@
 export default {
   data() {
     return {
+      imgSrc:require('../../pic/bac.jpg'),
       form: {
         name: "",
         password: "",
@@ -46,10 +50,10 @@ export default {
         if (valid) {
             sessionStorage.setItem("isLogin","true");
            // alert(this.form.name);
-            if(this.form.name=='clerk'){
+            if(this.form.name=='clerk'&&this.form.password=='123456'){
                  sessionStorage.setItem("isClerk","true");
                  this.$router.push("/frontShow");
-            }else if(this.form.name=="admin"){
+            }else if(this.form.name=="admin"&&this.form.password=='123456'){
                 sessionStorage.setItem("isAdmin","true");
                 this.$router.push("/back");
             } else{
@@ -74,6 +78,12 @@ export default {
 };
 </script>
 <style  scoped>
+.background{
+    width:100%;  
+    height:100%;  /**宽高100%是为了图片铺满屏幕 */
+    z-index:-1;
+    position: absolute;
+}
 .login-box {
   width: 350px;
   margin: 150px;
@@ -81,9 +91,23 @@ export default {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 30px #dcdfe6;
+
+  text-align: center;
+	background-color: #fff;
+	border-radius: 10px;
+	width: 300px;
+	height: 350px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
 }
 .login-title {
   text-align: center;
 }
+
 </style>
 

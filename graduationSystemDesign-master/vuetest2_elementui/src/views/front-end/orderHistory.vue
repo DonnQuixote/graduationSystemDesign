@@ -3,9 +3,15 @@
 <div>
 <el-container style="height: 750px; border: 1px solid #eee">
 <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-            <el-menu router :default-openeds="open_list" >
+            <el-menu router :default-openeds="open_list" 
+                default-active="2"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        background-color="#DDD"
+        active-text-color="#ffd04b">
                 <el-submenu v-for="(item,index) in $router.options.routes2" test = index :index="index+''" v-if="item.show" >
-                    <template slot="title"><i class="el-icon-message"></i>{{item.name}}</template>
+                    <template slot="title"><i class="el-icon-document"></i>{{item.name}}</template>
                     <el-menu-item @click="refresh()" v-for="(items2,index2) in item.children" :index="items2.path" :class="$route.path==items2.path?'is-active':''">{{items2.name}}</el-menu-item>
                 </el-submenu l-submenu>
             </el-menu>
@@ -26,12 +32,14 @@
         <el-table
                 :data="frontEndPageChange"
                 key="tableDataInstall"
+                 :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 border
                 style="width: 100%">
             <el-table-column
                     fixed
                     prop="oid"
                     label="订单编号"
+                    align="center"
                     width="150">
             </el-table-column>
             <el-table-column
@@ -44,15 +52,18 @@
             <el-table-column
                     prop="orderstate"
                     label="订单状态"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="totalprice"
                     label="订单总价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     label="操作"
+                    align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="detailsOrder(scope.row)" type="text" size="small">订单详情</el-button>

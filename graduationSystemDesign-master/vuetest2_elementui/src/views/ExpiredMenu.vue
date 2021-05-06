@@ -15,11 +15,13 @@
         <el-table
                 :data="frontEndPageChange"
                 key="tableDataInstall"
+                  :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 border
                 style="width: 100%">
             <el-table-column
                     prop="name"
                     label="药品名称"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -41,6 +43,7 @@
             <el-table-column
                     prop="count"
                     label="数量"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -52,21 +55,25 @@
             <el-table-column
                     prop="purchaseprice"
                     label="进价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="unitprice"
                     label="单价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="provider"
                     label="供应商"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="reason"
                     label="删除原因"
+                    align="center"
                     width="120">
             </el-table-column>
             //fixed="right"

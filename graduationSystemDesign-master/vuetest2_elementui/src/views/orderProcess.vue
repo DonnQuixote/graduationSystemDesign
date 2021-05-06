@@ -12,18 +12,20 @@
          </select>
          <el-button slot="append"  @click="findMessage()" icon="el-icon-search"></el-button>
          <el-button slot="append"  @click="resetRow()" icon="">重置</el-button>
-         </el-input>
+          </el-input>
         </div>
         <div style="margin-top:30px;" >
         <el-table
                 :data="frontEndPageChange"
                 key="tableDataInstall"
+                 :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 border
                 style="width: 100%">
             <el-table-column
                     fixed
                     prop="oid"
                     label="订单编号"
+                    align="center"
                     width="150">
             </el-table-column>
             <el-table-column
@@ -36,11 +38,13 @@
             <el-table-column
                     prop="orderstate"
                     label="订单状态"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="totalprice"
                     label="订单总价"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column

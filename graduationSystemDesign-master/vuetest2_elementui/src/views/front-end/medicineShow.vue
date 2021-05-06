@@ -1,13 +1,18 @@
 
 <template>
 <div>
-  <h1>medicineShow</h1>
 <el-container style="height: 750px; border: 1px solid #eee">
   
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-            <el-menu router :default-openeds="open_list" >
+            <el-menu router :default-openeds="open_list" 
+            default-active="2"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        background-color="#DDD"
+        active-text-color="#ffd04b">
                 <el-submenu v-for="(item,index) in $router.options.routes2" test = index :index="index+''" v-if="item.show" >
-                    <template slot="title"><i class="el-icon-message"></i>{{item.name}}</template>
+                    <template slot="title"><i class="el-icon-document"></i>{{item.name}}</template>
                     <el-menu-item @click="refresh()" v-for="(items2,index2) in item.children" :index="items2.path" :class="$route.path==items2.path?'is-active':''">{{items2.name}}</el-menu-item>
                 </el-submenu l-submenu>
             </el-menu>
@@ -26,6 +31,7 @@
         </div>
         <div style="margin-top:30px;" >
         <el-table
+            :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 :data="frontEndPageChange"
                 key="tableDataInstall"
                 border
@@ -33,6 +39,7 @@
             <el-table-column
                     fixed
                     prop="medicineid"
+                    align="center"
                     label="编号"
                     width="150">
             </el-table-column>
@@ -51,6 +58,7 @@
             </el-table-column>
             <el-table-column
                     prop="name"
+                    align="center"
                     label="药品名称"
                     width="120">
             </el-table-column>
@@ -72,6 +80,7 @@
             <el-table-column
                     prop="count"
                     label="数量"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -83,16 +92,19 @@
             <el-table-column
                     prop="purchaseprice"
                     label="进价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="unitprice"
                     label="单价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="provider"
                     label="供应商"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -109,6 +121,7 @@
             </el-table-column>
             <el-table-column
                     label="操作"
+                    align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="shop(scope.row)" type="text" size="small">加入订单</el-button>
@@ -285,7 +298,7 @@
             if(this.input1){
                             if(this.currentId==1){
                                 const _this = this
-                                 axios.get('http://localhost:8181/book/medineFindName/'+_this.input1).then(function (resp) {
+                                 axios.get('http://localhost:8181/book/medineLikeName/'+_this.input1).then(function (resp) {
                                     //console.log(resp);
                                     _this.tableData = resp.data
                         })    
@@ -293,7 +306,7 @@
                             else if(this.currentId==2){
                                 //alert('进入循环')
                                 const _this = this
-                            axios.get('http://localhost:8181/book/medineFindProvider/'+_this.input1).then(function (resp) {
+                            axios.get('http://localhost:8181/book/medineLikeProvider/'+_this.input1).then(function (resp) {
                                     //console.log(resp);
                                     _this.tableData = resp.data
                         })

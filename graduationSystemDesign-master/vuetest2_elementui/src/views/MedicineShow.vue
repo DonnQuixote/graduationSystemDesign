@@ -1,6 +1,6 @@
-<template>
+<template style="overflow:hidden">
 
-    <div>
+    <div style="overflow:hidden">
 
 
 <div style="margin-top:10px;">
@@ -31,11 +31,13 @@
         <el-table
                 :data="frontEndPageChange"
                 key="tableDataInstall"
+                :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 border
                 style="width: 100%">
             <el-table-column
                     fixed
                     prop="medicineid"
+                     align="center"
                     label="编号"
                     width="150">
             </el-table-column>
@@ -48,6 +50,7 @@
             <el-table-column
                     prop="name"
                     label="药品名称"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -68,6 +71,7 @@
             <el-table-column
                     prop="count"
                     label="数量"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -79,16 +83,19 @@
             <el-table-column
                     prop="purchaseprice"
                     label="进价"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="unitprice"
                     label="单价"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="provider"
                     label="供应商"
+                     align="center"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -105,6 +112,7 @@
             </el-table-column>
             <el-table-column
                     label="操作"
+                     align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>
@@ -331,7 +339,7 @@ export default {
         if (this.currentId == 1) {
           const _this = this;
           axios
-            .get("http://localhost:8181/book/medineFindName/" + _this.input1)
+            .get("http://localhost:8181/book/medineLikeName/" + _this.input1)
             .then(function (resp) {
               //console.log(resp);
               _this.tableData = resp.data;
@@ -341,7 +349,7 @@ export default {
           const _this = this;
           axios
             .get(
-              "http://localhost:8181/book/medineFindProvider/" + _this.input1
+              "http://localhost:8181/book/medineLikeProvider/" + _this.input1
             )
             .then(function (resp) {
               //console.log(resp);

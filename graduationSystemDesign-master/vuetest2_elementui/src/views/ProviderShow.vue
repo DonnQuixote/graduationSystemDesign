@@ -12,32 +12,38 @@
 
         <div>
         <el-table
+                 :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 :data="frontEndPageChange"
                 style="width: 100%">
             <el-table-column
                     fixed
                     prop="id"
                     label="编号"
+                    align="center"
                     width="150">
             </el-table-column>
             <el-table-column
                     prop="provider"
                     label="供应商名称"
+                    align="center"
                     width="120">  
             </el-table-column>
             <el-table-column
                     prop="phonenumber"
                     label="联系电话"
                     width="120"
+                    align="center"
                    >
             </el-table-column>
             <el-table-column
                     prop="director"
                     label="联系人"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     label="操作"
+                    align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>

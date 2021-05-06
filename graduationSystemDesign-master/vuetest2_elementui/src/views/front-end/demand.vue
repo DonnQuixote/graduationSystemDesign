@@ -2,12 +2,17 @@
 
 <template>
 <div>
-      <h1>demand</h1>
       <el-container style="height: 750px; border: 1px solid #eee">
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-            <el-menu router :default-openeds="open_list" >
+            <el-menu router :default-openeds="open_list" 
+                default-active="2"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        background-color="#DDD"
+        active-text-color="#ffd04b">
                 <el-submenu v-for="(item,index) in $router.options.routes2" test = index :index="index+''" v-if="item.show" >
-                    <template slot="title"><i class="el-icon-message"></i>{{item.name}}</template>
+                    <template slot="title"><i class="el-icon-document"></i>{{item.name}}</template>
                     <el-menu-item @click="refresh()" v-for="(items2,index2) in item.children" :index="items2.path" :class="$route.path==items2.path?'is-active':''">{{items2.name}}</el-menu-item>
                 </el-submenu>
             </el-menu>
@@ -26,38 +31,45 @@
         </div>
         <div style="margin-top:30px;" >
         <el-table
+         :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 :data="frontEndPageChange"
                 key="tableDataInstall"
                 border
                 style="width: 100%">
             <el-table-column
                     fixed
+                    align="center"
                     prop="id"
                     label="编号"
                     width="150">
             </el-table-column>
             <el-table-column
                     prop="name"
+                    align="center"
                     label="需求药品名称"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="count"
+                    align="center"
                     label="数量"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="price"
+                    align="center"
                     label="大致价钱"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="provider"
+                    align="center"
                     label="供应商"
                     width="120">
             </el-table-column>
             <el-table-column
                     label="操作"
+                    align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>

@@ -56,6 +56,7 @@
         </div>
         <div style="margin-top: 30px">
           <el-table
+          :header-cell-style="{background:'#eef1f6',color:'#606266'}"
             :data="frontEndPageChange"
             key="tableDataInstall"
             border
@@ -77,9 +78,9 @@
               width="150"
             >
             </el-table-column>
-            <el-table-column prop="name" label="药品名称" width="120">
+            <el-table-column prop="name" align="center" label="药品名称" width="120">
             </el-table-column>
-            <el-table-column prop="count" label="数量" width="120">
+            <el-table-column prop="count" align="center" label="数量" width="120">
             </el-table-column>
             <el-table-column
               prop="add"
@@ -88,11 +89,11 @@
               width="120"
             >
             </el-table-column>
-            <el-table-column prop="price" label="单价" width="120">
+            <el-table-column prop="price" align="center" label="单价" width="120">
             </el-table-column>
-            <el-table-column prop="provider" label="供应商" width="120">
+            <el-table-column prop="provider" align="center" label="供应商" width="120">
             </el-table-column>
-            <el-table-column label="操作" width="100">
+            <el-table-column label="操作" align="center" width="100">
               <template slot-scope="scope">
                 <el-button
                   @click="deleteOrder(scope.row)"
@@ -170,7 +171,7 @@ export default {
           );
         });
       axios.get("http://localhost:8181/drugShoppingCart/deleteAll/");
-      //window.location.reload();
+      window.location.reload();
     },
     submitOrder2() {
       this.json_data = this.tableData;

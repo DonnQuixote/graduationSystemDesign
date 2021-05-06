@@ -15,6 +15,7 @@
         </div> -->
         <div style="margin-top:30px;" >
         <el-table
+        :header-cell-style="{background:'#eef1f6',color:'#606266'}"
                 :data="frontEndPageChange"
                 key="tableDataInstall"
                 border
@@ -23,6 +24,7 @@
                     fixed
                     prop="eid"
                     label="进药订单编号"
+                    align="center"
                     width="150">
             </el-table-column>
             <el-table-column
@@ -36,10 +38,12 @@
             <el-table-column
                     prop="price"
                     label="进药订单总价"
+                    align="center"
                     width="120">
             </el-table-column>
             <el-table-column
                     label="操作"
+                    align="center"
                     width="100">
                 <template slot-scope="scope">
                     <el-button @click="detailsOrder(scope.row)" type="text" size="small">订单详情</el-button>
