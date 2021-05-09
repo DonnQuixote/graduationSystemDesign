@@ -82,13 +82,13 @@ public class MedicineHandler {
 
     @GetMapping("medineLikeName/{name}")
     public List<Medicine_basicmessage> medicineLikeName(@PathVariable("name")String name){
-        List<Medicine_basicmessage> results = medicineReposity.findLikeName(name);
+        List<Medicine_basicmessage> results = medicineReposity.findLikeName("%"+name+"%");
         return results;
     }
 
     @GetMapping("medineLikeProvider/{provider}")
     public List<Medicine_basicmessage> medicineLikeProvider(@PathVariable("provider")String provider){
-        List<Medicine_basicmessage> results = medicineReposity.findLikeProvider(provider);
+        List<Medicine_basicmessage> results = medicineReposity.findLikeProvider("%"+provider+"%");
         return results;
     }
 

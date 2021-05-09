@@ -32,7 +32,7 @@
         </div>
         <div style="margin-top:10px;">
 
-            {{"订单总价: "}} {{this.totalPrice}}
+            {{"订单总价: "}} {{this.totalPrice|numFilter}}
          <el-button slot="append"  @click="submitOrder()" icon="">提交订单</el-button>
          <el-button slot="append"  @click="destructionOrder()" icon="">销毁订单</el-button>
          </el-input>
@@ -128,6 +128,17 @@
 
 <script>
 export default {
+      filters: {
+numFilter(value) {
+// 截取当前数据到小数点后两位
+
+let realVal = Number(value).toFixed(2)
+
+// num.toFixed(2)获取的是字符串
+
+return Number(realVal)
+}
+},
   name: "search",
   name: "frontEndPage",
   methods: {
@@ -156,7 +167,10 @@ export default {
 
       axios.delete("http://localhost:8181/shopping_cart/deleteAll/");
       _this.$alert("订单提交成功");
-     window.location.reload();
+      _this.$router.push({
+          path: "/orderOfAll",
+        });
+     //window.location.reload();
     },
     destructionOrder() {
       axios.delete("http://localhost:8181/shopping_cart/deleteAll/");
@@ -186,6 +200,7 @@ export default {
                   type: "success",
                   message: "现在的数量是: " + _this.temp,
                 });
+                _this.totalPrice = _this.temp;
                 // this.updateOrderData = value;
                 // this.$alert(this.updateOrderData);
                 row.add = value;
@@ -245,6 +260,7 @@ export default {
             });
           } else {
             this.temp = parseInt(row.medicinecount) - parseInt(value);
+            this.totalPrice = this.temp;
             this.$message({
               type: "success",
               message: "现在的数量是: " + this.temp,

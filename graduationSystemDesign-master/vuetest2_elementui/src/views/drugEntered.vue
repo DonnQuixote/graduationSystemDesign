@@ -35,7 +35,7 @@
         </div>
         <div style="margin-top: 10px" >
           <div>
-            {{ "订单总价: " }} {{ this.totalPrice }}
+            {{ "订单总价: " }} {{ this.totalPrice |numFilter}}
             <!-- <el-button slot="append"  @click="submitOrder()" icon="">提交订单</el-button> -->
             <download-excel
               class="export-excel-wrapper"
@@ -49,6 +49,9 @@
               >
             </download-excel>
 
+            <el-button slot="append" @click="submitOrder()" icon=""
+              >提交订单</el-button
+            >
             <el-button slot="append" @click="destructionOrder()" icon=""
               >销毁订单</el-button
             >
@@ -139,6 +142,17 @@
 
 <script>
 export default {
+      filters: {
+numFilter(value) {
+// 截取当前数据到小数点后两位
+
+let realVal = Number(value).toFixed(2)
+
+// num.toFixed(2)获取的是字符串
+
+return Number(realVal)
+}
+},
   name: "search",
   name: "frontEndPage",
   methods: {
@@ -171,11 +185,15 @@ export default {
           );
         });
       axios.get("http://localhost:8181/drugShoppingCart/deleteAll/");
-      window.location.reload();
+      window.location.reload
+        // _this.$router.push({
+        //   path: "/drugEnteredHistory"
+        // });
+  
     },
     submitOrder2() {
       this.json_data = this.tableData;
-      this.submitOrder();
+     //this.submitOrder();
     },
     destructionOrder() {
       axios.get("http://localhost:8181/drugShoppingCart/deleteAll/");
@@ -194,6 +212,7 @@ export default {
       })
         .then(({ value }) => {
           this.temp = parseInt(row.count) + parseInt(value);
+          this.totalPrice = this.temp;
           this.$message({
             type: "success",
             message: "现在的数量是: " + this.temp,
@@ -248,6 +267,7 @@ export default {
             });
           } else {
             this.temp = row.count - value;
+            this.totalPrice = this.temp;
             this.$message({
               type: "success",
               message: "现在的数量是: " + this.temp,

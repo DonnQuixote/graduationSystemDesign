@@ -16,7 +16,7 @@
         </div>
         <div style="margin-top:10px;">
 
-            {{"订单总价: "}} {{this.totalPrice}}
+            {{"订单总价: "}} {{this.totalPrice|numFilter}}
             <el-button slot="append"  @click="updateOrderState()" icon="">修改订单状态</el-button>
             <el-button slot="append"  @click="back()" icon="">返回订单列表</el-button>
          </el-input>
@@ -91,6 +91,17 @@
 
 <script>
 export default {
+    filters: {
+numFilter(value) {
+// 截取当前数据到小数点后两位
+
+let realVal = Number(value).toFixed(2)
+
+// num.toFixed(2)获取的是字符串
+
+return Number(realVal)
+}
+},
   name: "search",
   name: "frontEndPage",
   methods: {
@@ -119,6 +130,9 @@ export default {
         // });
       }else{
         this.$alert("订单已经处理，不能再更改")
+        this.$router.push({
+          path: "/orderProcess",
+        });
       }
     },
     back() {

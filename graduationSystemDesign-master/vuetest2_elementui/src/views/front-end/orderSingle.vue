@@ -32,7 +32,7 @@
         </div>
         <div style="margin-top:10px;">
 
-            {{"订单总价: "}} {{this.totalPrice}}
+            {{"订单总价: "}} {{this.totalPrice|numFilter}}
             <el-button slot="append"  @click="back()" >返回上一页</el-button>
          </el-input>
         </div>
@@ -113,6 +113,17 @@
 
 <script>
 export default {
+        filters: {
+numFilter(value) {
+// 截取当前数据到小数点后两位
+
+let realVal = Number(value).toFixed(2)
+
+// num.toFixed(2)获取的是字符串
+
+return Number(realVal)
+}
+},
   name: "search",
   name: "frontEndPage",
   methods: {

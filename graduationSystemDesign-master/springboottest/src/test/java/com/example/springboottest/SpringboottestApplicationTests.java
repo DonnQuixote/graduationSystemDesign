@@ -159,4 +159,10 @@ class SpringboottestApplicationTests {
         List<Medicine_sales_record> list = medicineSalesRecordReposity.findByMedicineId(2);
         System.out.println(list.size());
     }
+
+    @Test
+    void TestFindLikeProvider(){
+        List<Medicine_basicmessage> list = medicineReposity.findLikeProvider("%河南%");
+        System.out.println(list.size());
+    }
 }
